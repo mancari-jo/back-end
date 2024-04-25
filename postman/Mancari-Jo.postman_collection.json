@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "5af03ea6-217a-4d67-9cad-62dc21985a22",
+		"name": "Mancari-Jo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24571146",
+		"_collection_link": "https://cloudy-resonance-787941.postman.co/workspace/mancari-jo~f665497e-1eda-4006-a5c5-189441f9893e/collection/24571146-5af03ea6-217a-4d67-9cad-62dc21985a22?action=share&source=collection_link&creator=24571146"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\" : \"User Example\",\r\n    \"username\" : \"example\",\r\n    \"password\" : \"example123\",\r\n    \"role\": \"jobSeeker\",\r\n    \"tempatLahir\" : \"Airmadidi\",\r\n    \"tanggalLahir\" : \"11-01-2001\",\r\n    \"alamat\" : \"Unklab\",\r\n    \"pendidikanTerakhir\" : \"S1\"\r\n}\r\n// {\r\n//     \"nama\" : \"User Provider\",\r\n//     \"namaPengguna\" : \"exampleProvider\",\r\n//     \"kataSandi\" : \"test\",\r\n//     \"role\" : \"jobProvider\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namaPengguna\" : \"example\",\r\n    \"kataSandi\" : \"12345\",\r\n    \"role\": \"jobSeeker\"\r\n}\r\n// {\r\n//     \"username\" : \"exampleProvider\",\r\n//     \"password\" : \"test\",\r\n//     \"role\" : \"jobProvider\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Username",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"username\" : \"example\",\r\n//     \"password\" : \"example123\",\r\n//     \"role\": \"jobSeeker\"\r\n// }\r\n{\r\n    \"username\" : \"exampleProvider\",\r\n    \"password\" : \"test\",\r\n    \"role\" : \"jobProvider\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/check-username?username=example&role=jobSeeke",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"check-username"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "example"
+								},
+								{
+									"key": "role",
+									"value": "jobSeeke"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"65f1848b1003faa2ad644ffb\",\r\n    \"password\" : \"12345\",\r\n    \"role\": \"jobSeeker\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/change-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Get By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/65f1848b1003faa2ad644ffb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"65f1848b1003faa2ad644ffb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namaPengguna\" : \"example1\",\r\n    \"kataSandi\" : \"12345\",\r\n    \"nama\" : \"User\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/66010a1187ea44109ebbb219",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"66010a1187ea44109ebbb219"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "job preference",
+			"item": [
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/job-preferences",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"job-preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namaPengguna\" : \"example1\",\r\n    \"kataSandi\" : \"12345\",\r\n    \"nama\" : \"User\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/job-preferences",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"job-preferences"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "job",
+			"item": [
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/job",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"job"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
