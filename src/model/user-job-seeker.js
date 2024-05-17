@@ -37,7 +37,7 @@ const userJobSeekerSchema = new mongoose.Schema({
   },
   pendidikanTerakhir: {
     type: String,
-    required: true,
+    required: false,
     enum: ['SD', 'SMP', 'SMA', 'D3', 'S1', 'S2', 'S3'],
   },
   preferensiPekerjaan: {
@@ -53,6 +53,13 @@ const userJobSeekerSchema = new mongoose.Schema({
       type: Schema.Types.Mixed,
     },
   ],
+  testimoni: {
+    type: String,
+    required: false,
+  },
+  pemulihanKataSandi: {
+    type: Schema.Types.Mixed,
+  },
 });
 
 const ModelUserJobSeeker = mongoose.model('userJobSeeker', userJobSeekerSchema);
@@ -60,6 +67,10 @@ const ModelUserJobSeeker = mongoose.model('userJobSeeker', userJobSeekerSchema);
 export default ModelUserJobSeeker;
 
 //---------------Module User----------------
+
+async function getAllUsers() {
+  return await ModelUserJobSeeker.find();
+}
 
 /**
  * Mendapatkan pengguna berdasarkan nama pengguna.
@@ -115,6 +126,7 @@ async function deleteUser(id) {
 }
 
 export const ModuleUserJobSeeker = {
+  getAllUsers,
   getUserByUsername,
   getUSerById,
   addUser,

@@ -1,8 +1,28 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { ModuleUserJobSeeker } from '../model/user-job-seeker.js';
 import { ModuleUserJobProvider } from '../model/user -job-provider.js';
 
 const RouterUser = express.Router();
+
+RouterUser.get('/', async (req, res) => {
+  try {
+    const userJobProvider = await ModuleUserJobProvider.getAllUsers();
+    const userJobSeeker = await ModuleUserJobSeeker.getAllUsers();
+
+    const users = [...userJobProvider, ...userJobSeeker];
+
+    res.status(200).json({
+      status: true,
+      message: 'Sukses mendapatkan semua user',
+      data: users,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: error.message,
+    });
+  }
+});
 
 /**
  * Mendapatkan informasi pengguna berdasarkan ID.
