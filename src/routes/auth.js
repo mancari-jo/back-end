@@ -24,7 +24,7 @@ RouterAuth.post('/register', async (req, res) => {
       (!data.tempatLahir ||
         !data.tanggalLahir ||
         !data.alamat ||
-        !data.pendidikanTerakhir)
+        !data.pemulihanKataSandi)
     ) {
       throw new Error(
         'Data yang diperlukan untuk jobSeeker belum diisi lengkap'
@@ -65,6 +65,7 @@ RouterAuth.post('/register', async (req, res) => {
         preferensiPekerjaan: data.preferensiPekerjaan || [],
         lamaran: data.lamaran || [],
         pengalamanKerja: data.pengalamanKerja || [],
+        pemulihanKataSandi: data.pemulihanKataSandi,
       });
     } else if (data.role === 'jobProvider') {
       newUser = await ModuleUserJobProvider.addUser({
@@ -72,6 +73,7 @@ RouterAuth.post('/register', async (req, res) => {
         kataSandi: hashedPassword,
         nama: data.nama,
         pekerjaan: data.pekerjaan || [],
+        pemulihanKataSandi: data.pemulihanKataSandi,
       });
     }
 

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, SchemaType } from 'mongoose';
 
 const userJobProviderSchema = new mongoose.Schema({
   namaPengguna: {
@@ -26,6 +26,13 @@ const userJobProviderSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
+  testimoni: {
+    type: String,
+    required: false,
+  },
+  pemulihanKataSandi: {
+    type: Schema.Types.Mixed,
+  },
 });
 
 const ModelUserJobProvider = mongoose.model(
@@ -36,6 +43,10 @@ const ModelUserJobProvider = mongoose.model(
 export default ModelUserJobProvider;
 
 //---------------Module User----------------
+
+async function getAllUsers() {
+  return await ModelUserJobProvider.find();
+}
 
 /**
  * Mendapatkan pengguna berdasarkan nama pengguna.
@@ -84,6 +95,7 @@ async function deleteUser(id) {
 }
 
 export const ModuleUserJobProvider = {
+  getAllUsers,
   getUserByUsername,
   getUSerById,
   addUser,
